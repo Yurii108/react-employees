@@ -21,11 +21,6 @@ class EmployeesAddForm extends Component {
         e.preventDefault();
         if (this.state.name.length > 2 && this.state.salary > 99) {
             this.props.onAdd(this.state.name, this.state.salary);
-        } else {
-            this.setState({
-                name: 'Минимум 4 символа',
-                salary: 'не меньше 99$'
-            })
         }
         this.setState({
             name: '',
