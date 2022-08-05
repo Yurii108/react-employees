@@ -2,7 +2,7 @@
     margin-top: 30px;
     padding: 25px;
     background-color: #3b5a80;
-    break-before: 4px;
+    border-radius: 4px;
     box-shadow: 15px 15px 15px rgba(0, 0, 0, .15);
     color: #fff;
 }

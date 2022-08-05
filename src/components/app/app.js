@@ -74,9 +74,9 @@ class App extends Component {
     }
 
     render() {
-        const { data, term } = this.state;
+        const { data, term} = this.state;
         const employees = this.state.data.length;
-        const increased = this.state.data.filter(item => item.increase).length;
+        const increased = this.state.data.filter(item => item.increase).length;    
         const visibleData = this.searchEmp(data, term);
         return (
             <div className='app'>
