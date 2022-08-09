@@ -15,11 +15,12 @@ class App extends Component {
             data: [
                 { name: 'Peter H.', salary: 800, increase: false, rise: true, id: 1 },
                 { name: 'Mark R.', salary: 3000, increase: true, rise: false, id: 2 },
-                { name: 'Roy T.', salary: 5000, increase: false, rise: false, id: 3 },
+                { name: 'Roy T.', salary: 900, increase: false, rise: false, id: 3 },
                 { name: 'Grace M.', salary: 1500, increase: true, rise: false, id: 4 },
-                { name: 'Caren O.', salary: 4000, increase: false, rise: false, id: 5 },
+                { name: 'Caren O.', salary: 4000, increase: false, rise: true, id: 5 },
             ],
-            term: ''
+            term: '',
+            filter: 'all'
         }
         this.maxId = 6;
     }
@@ -73,18 +74,33 @@ class App extends Component {
         this.setState({ term });
     }
 
+    filterPost = (items, filter) => {
+        switch (filter) {
+            case 'rise':
+                return items.filter(item => item.rise);
+            case 'moreThan1000':
+                return items.filter(item => item.salary > 1000);
+            default:
+                return items;
+        }
+    }
+
+    onFilterSelect = (filter) => {
+    this.setState({filter});
+    }
+
     render() {
-        const { data, term} = this.state;
+        const { data, term, filter } = this.state;
         const employees = this.state.data.length;
-        const increased = this.state.data.filter(item => item.increase).length;    
-        const visibleData = this.searchEmp(data, term);
+        const increased = this.state.data.filter(item => item.increase).length;
+        const visibleData = this.filterPost(this.searchEmp(data, term), filter);
         return (
             <div className='app'>
                 <AppInfo employees={employees} increased={increased} />
 
                 <div className="search-panel">
-                    <SearchPanel onUpdateSearch={this.onUpdateSearch}/>
-                    <AppFilter />
+                    <SearchPanel onUpdateSearch={this.onUpdateSearch} />
+                    <AppFilter filter={filter} onFilterSelect={this.onFilterSelect}/>
                 </div>
 
                 <EmployeesList
@@ -99,3 +115,5 @@ class App extends Component {
 }
 
 export default App;
+
+
