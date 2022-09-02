@@ -23,7 +23,8 @@ class SearchPanel extends Component {
                 className="form-control search-input"
                 placeholder="Найти сотрудника"
                 value={this.state.term}
-                onChange={this.onUpdateSearchInPanel} />
+                onChange={this.onUpdateSearchInPanel}
+            />
         )
     }
 }

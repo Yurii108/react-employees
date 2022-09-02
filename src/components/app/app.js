@@ -9,9 +9,8 @@ import EmployeesAddForm from '../employees-add-form/employees-add-form';
 import './app.css';
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    
+    state = {
             data: [
                 { name: 'Peter H.', salary: 800, increase: false, rise: true, id: 1 },
                 { name: 'Mark R.', salary: 3000, increase: true, rise: false, id: 2 },
@@ -22,8 +21,8 @@ class App extends Component {
             term: '',
             filter: 'all'
         }
-        this.maxId = 6;
-    }
+        maxId = 6;
+
 
     addItem = (name, salary) => {
         const newItem = {
